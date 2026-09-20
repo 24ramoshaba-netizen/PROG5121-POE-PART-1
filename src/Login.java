@@ -46,7 +46,7 @@ public class Login {
     }
 
     public boolean checkUserName(){
-        return checkUserName(this.username);
+        return checkUserName();
     }
 
     /**Validates that the password meets complexity requirements:
@@ -101,6 +101,37 @@ public class Login {
 
     public boolean checkCellphoneNumber(){
         return checkCellphoneNumber(this.cellphoneNumber);
+    }
+
+    /**evaluates registration conditions and returns the corresponding response message */
+    public String registerUser() {
+        if (!checkUsername(this.username)) {
+            return "Username is not correctly formatted. It must contain an underscore and be no more than 5 characters long.";
+        }
+        if (!checkPasswordComplexity(this.password)) {
+            return "Password is not correctly formatted. It must be at least 8 characters long, contain a capital letter, a number, and a special character.";
+        }
+        if (!checkCellphoneNumber(this.cellphoneNumber)) {
+            return "Cellphone number is not correctly formatted. It must start with the country code (+27) followed by the main phone number sequence.";
+        }
+        return "Registration successful!";
+    }
+     
+    /**verifies stored user credentials against login input */
+    public boolean loginUser(String enteredUsername, String enteredPassword) {
+        if (this.username == null || this.password == null) {
+            return false;
+        }
+        return this.username.equals(enteredUsername) && this.password.equals(enteredPassword);
+    }
+
+    /**returns the formatted authentication status message */
+    public String returnLoginStatus(boolean loginSuccess) {
+        if (loginSuccess) {
+            return "Welcome " + this.firstName + " " + this.lastName + ", it is great to see you again.";
+        } else {
+            return "Username or password incorrect, please try again.";
+        }
     }
 
 }
