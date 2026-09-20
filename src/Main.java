@@ -42,7 +42,17 @@ public class Main {
         System.out.println(userLogin.registerUser());
 
         //login process
+        System.out.println("\n===USER LOGIN===");
+        System.out.print("Enter Username: ");
+        String loginUser = scanner.nextLine();
 
+        System.out.print("Enter Password: ");
+        String loginPass = scanner.nextLine();
+
+        boolean isAuthenticated = userLogin.loginUser(loginUser, loginPass);
+        System.out.println("\n" + userLogin.returnLoginStatus(isAuthenticated));
+
+        scanner.close();
     }
 
 }
