@@ -37,6 +37,70 @@ public class Login {
     public String getCellphoneNumber() { return cellphoneNumber; }
     public void setCellphoneNumber(String cellphoneNumber) { this.cellphoneNumber = cellphoneNumber; }
 
-    
+    /**Check if the username contains an underscore and is no more than 5 characters long*/
+    public boolean checkUsername(String username) {
+        if (username == null) {
+            return false;
+        }
+        return username.contains("_") && username.length() <= 5;
+    }
+
+    public boolean checkUserName(){
+        return checkUserName(this.username);
+    }
+
+    /**Validates that the password meets complexity requirements:
+     * - At least 8 characters long
+     * - Contains at least one Capital letter
+     * - contains a number
+     * - contains a special character
+     */
+    public boolean checkPasswordComplexity(String password) {
+        if (password == null || password.length() < 8) {
+            return false;
+        }
+        
+        boolean hasCapital = false;
+        boolean hasDigit = false;
+        boolean hasSpecial = false;
+
+        for (char c : password.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                hasCapital = true;
+            } else if (Character.isDigit(c)) {
+                hasDigit = true;
+            } else if (!Character.isLetterOrDigit(c)) {
+                hasSpecial = true;
+            }
+        }
+        return hasCapital && hasDigit && hasSpecial;
+    }
+
+    public boolean checkPasswordComplexity(){
+        return checkPasswordComplexity(this.password);
+    }
+
+    /**Validates the cellphone number format using regular expressions
+     * 
+     * Reference:
+     * Regular expression pattern adapted from OWASP Validation Regex Guidelines:
+     * and Oracle Java Pattern documentation:
+     * https://docs.oracle.com/javase/8/docs/api/java/util/regex/Pattern.html
+    */
+   public boolean checkCellphoneNumber(String cellphoneNumber) {
+        if (cellphoneNumber == null) {
+            return false;
+        }
+        // Matches international country code (+27) and main phone number sequence
+        String regex = "^\\+\\d{1,3}\\d{1,9}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(cellphoneNumber);
+        
+        return matcher.matches() && cellphoneNumber.length() <= 12;
+    }
+
+    public boolean checkCellphoneNumber(){
+        return checkCellphoneNumber(this.cellphoneNumber);
+    }
 
 }
