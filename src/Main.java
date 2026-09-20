@@ -2,17 +2,47 @@ import java.util.Scanner;
 
 /**console application entry point */
 public class Main {
-public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
-    Login userLogin = new Login();
-    System.out.println("===USER REGISTRATION===");
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        Login userLogin = new Login();
+        
+        System.out.println("===USER REGISTRATION===");
 
-    System.out.print("Enter First Name: ");
-     userLogin.setFirstName(scanner.nextLine());
+        System.out.print("Enter First Name: ");
+        userLogin.setFirstName(scanner.nextLine());
 
-    System.out.print("Enter Last Name: ");
-    userLogin.setLastName(scanner.nextLine());
+         System.out.print("Enter Last Name: ");
+        userLogin.setLastName(scanner.nextLine());
 
-    //username input loop 
+        //Username input loop
+        while (true) {
+            System.out.print("Enter Username (must contain '_' and be <= 5 chars): ");
+            String inputUsername = scanner.nextLine();
+            if (userLogin.checkUsername(inputUsername)) {
+                System.out.println("Username successfully captured");
+                userLogin.setUsername(inputUsername);
+                break;
+            } else {
+                System.out.println("Invalid username. Please try again.");
+            }
+        }
+        //cellphone number input loop
+        while (true) {
+            System.out.print("Enter Cellphone Number with international code(e.g +27 123456789): ");
+            String inputCell = scanner.nextLine();
+            if (userLogin.checkCellphoneNumber(inputCell)) {
+                System.out.println("Cellphone number successfully captured");
+                userLogin.setCellphoneNumber(inputCell);
+                break;
+            } else {
+                System.out.println("Invalid cellphone number. Please try again.");
+            }
+        }
+        System.out.println("\nRegistration summary:");
+        System.out.println(userLogin.registerUser());
+
+        //login process
+
     }
+
 }
