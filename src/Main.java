@@ -26,6 +26,18 @@ public class Main {
                 System.out.println("Invalid username. Please try again.");
             }
         }
+        //Password input loop
+        while (true) {
+            System.out.print("Enter Password (must contain a special character, a number, and be >= 8 chars): ");
+            String inputPassword = scanner.nextLine();
+            if (userLogin.checkPasswordComplexity(inputPassword)) {
+                System.out.println("Password successfully captured");
+                userLogin.setPassword(inputPassword);
+                break;
+            } else {
+                System.out.println("Invalid password. Please try again.");
+            }    
+        }
         //cellphone number input loop
         while (true) {
             System.out.print("Enter Cellphone Number with international code(e.g +27 123456789): ");
