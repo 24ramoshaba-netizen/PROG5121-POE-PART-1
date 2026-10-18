@@ -136,13 +136,9 @@ public class Message {
     //Getters
     public String getMessageID() {return messageID; }
     public int getMessageNumber() {return messageNumber; }
-    public String getRecipient() {return recipientCell; }
+    public String getRecipientCell() {return recipientCell; }
     public String getMessageText() {return messageText; }
     public String getMessageHash() {return messageHash; }
-    public String getStatus() {return status; }
-
-    public String getRecipientCell() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getRecipientCell'");
-    }
+    public String getStatus() {return status;}
+    
 }
