@@ -140,4 +140,9 @@ public class Message {
     public String getMessageText() {return messageText; }
     public String getMessageHash() {return messageHash; }
     public String getStatus() {return status; }
+
+    public String getRecipientCell() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRecipientCell'");
+    }
 }
