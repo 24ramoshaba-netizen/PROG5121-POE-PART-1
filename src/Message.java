@@ -107,6 +107,37 @@ public class Message {
 
     /**allows the user to choose if they want to send, store, or disregard the message */
     public String sentMessage(int choice) {
-        
+        switch (choice) {
+            case 1:
+                this.status = "Sent";
+                return "Message successfully sent.";
+            case 2:
+                this.status = "Disregarded";
+                return "Press 0 to delete the message";
+            case 3:
+                this.status = "Stored";
+                return "Message successfully stored.";
+            default:
+                return "Invalid choice selected.";
+        }        
     }
+
+    /**research implementation to format message data for JSON storage */
+    public String storeMessage() {
+        return "{\n" +
+                "  \"messageID\": \"" + this.messageID + "\",\n" +
+                "  \"messageHash\": \"" + this.messageHash + "\",\n" +
+                "  \"recipient\": \"" + this.recipientCell + "\",\n" +
+                "  \"message\": \"" + this.messageText + "\",\n" +
+                "  \"status\": \"" + (status != null ? status : "Pending") + "\"\n" +
+                "}";
+    }
+
+    //Getters
+    public String getMessageID() {return messageID; }
+    public int getMessageNumber() {return messageNumber; }
+    public String getRecipient() {return recipientCell; }
+    public String getMessageText() {return messageText; }
+    public String getMessageHash() {return messageHash; }
+    public String getStatus() {return status; }
 }
