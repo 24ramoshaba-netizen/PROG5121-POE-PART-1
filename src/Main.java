@@ -5,8 +5,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Login userLogin = new Login();
-        
-        System.out.println("===USER REGISTRATION===");
+
+        System.out.println("============================================");
+        System.out.println(" PROG5121 POE: PART 1 - USER REGISTRATION");
+        System.out.println("============================================");
 
         System.out.print("Enter First Name: ");
         userLogin.setFirstName(scanner.nextLine());
@@ -54,7 +56,10 @@ public class Main {
         System.out.println(userLogin.registerUser());
 
         //login process
-        System.out.println("\n===USER LOGIN===");
+        System.out.println("\n====================================");
+        System.out.println(" PROG5121 POE: PART 1 - USER LOGIN");
+        System.out.println("=====================================");
+
         System.out.print("Enter Username: ");
         String loginUser = scanner.nextLine();
 
