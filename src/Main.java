@@ -71,8 +71,10 @@ public class Main {
         System.out.println("\n" + userLogin.returnLoginStatus(isAuthenticated));
 
 
-        //PART 2: QUICKCHAT MESAGING FEATURE
-        System.out.println("\nWelcome to QuickChat.");
+        //PART 2: QUICKCHAT MESSAGING FEATURE
+        System.out.println("========================");
+        System.out.println("\n WECOME TO QUICKCHAT.");
+        System.out.println("========================");
         ArrayList<Message> sentMessagesList = new ArrayList<>();
         int totalMessagesSent = 0;
 
